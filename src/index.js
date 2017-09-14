@@ -17,7 +17,7 @@ class App extends Component {
 
     this.state = {
       videos: [],
-      selectedVideo: null,
+      selectedVideo: null
     };
 
     YTSearch({key: API_KEY, term: 'cats'}, (videos) => {
