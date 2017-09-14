@@ -26,12 +26,17 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "@segment/to-iso-string": "^1.0.1",
     "babel-preset-stage-1": "^6.1.18",
     "lodash": "^3.10.1",
+    "minimatch": "^3.0.4",
+    "pug": "^2.0.0-rc.3",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "4.3.0",
     "react-router": "^2.0.1",
-    "redux": "^3.0.4"
+    "redux": "^3.0.4",
+    "to-iso-string": "0.0.2",
+    "youtube-api-search": "0.0.5"
   }
 }

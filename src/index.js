@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import YTSearch from 'youtube-api-search';
 
-import App from './components/app';
-import reducers from './reducers';
+// Import of components
+import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+// YouTube Data API v3
+const API_KEY = 'AIzaSyCMGcon_Z1aHDbdI0wVoGMwYjZR5pc7gRA';
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+// Create a new component for HTML
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      videos: [],
+      selectedVideo: null,
+    };
+
+    YTSearch({key: API_KEY, term: 'cats'}, (videos) => {
+      this.setState({
+        videos: videos,
+        selectedVideo: videos[0]
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div>
+          <SearchBar />
+          <VideoDetail video={this.state.selectedVideo} />
+          <VideoList
+            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+            videos={this.state.videos} />
+      </div>
+    );
+  }
+}
+
+// Include component to the DOM
+ReactDOM.render(<App />, document.querySelector('.container'));
