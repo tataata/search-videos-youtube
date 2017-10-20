@@ -1,18 +1,20 @@
+body {
+  padding: 30px 0;
+}
+
 .search-bar {
-  margin: 20px;
   text-align: center;
+  margin: 0 0 20px;
 }
 
 .search-bar input {
-  min-width: 80%;
   display: inline-block;
+  width: 100%;
 }
 
-.video-detail .detail {
+.video-detail .details {
   margin: 10px 0 0;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
 }
 
 .list-group-item {
@@ -21,4 +23,8 @@
 
 .list-group-item:hover {
   background-color: #eee;
+}
+
+.video-list img {
+  min-width: 100%;
 }
